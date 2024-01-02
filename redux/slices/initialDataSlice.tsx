@@ -24,4 +24,4 @@ export const initialDataSlice = createSlice({
 
 export const { setLoadedData } = initialDataSlice.actions;
 export const initialDataSelector = (state: State) => state;
-export default initialDataSlice.reducer;
+export default initialDataSlice;

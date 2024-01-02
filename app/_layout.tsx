@@ -8,8 +8,12 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
-import { TamaguiProvider, Text, Theme } from "tamagui";
+import { Button, H6, TamaguiProvider, Text, Theme } from "tamagui";
 
+import {
+  DrawerContentCustomize,
+  DrawerRender
+} from "../components/DrawerCustomize";
 import { MySafeAreaView } from "../components/MySafeAreaView";
 import store from "../redux/store/store";
 import config from "../tamagui.config";
@@ -33,7 +37,7 @@ export default function Layout() {
 
         // Artificially delay for two seconds to simulate a slow loading
         // experience. Please remove this if you copy and paste the code!
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -66,13 +70,9 @@ export default function Layout() {
             <ThemeProvider
               value={colorScheme === "light" ? DefaultTheme : DarkTheme}
             >
-              <MySafeAreaView>
-                <Stack
-                  screenOptions={{
-                    headerShown: false
-                  }}
-                />
-              </MySafeAreaView>
+              {/* <MySafeAreaView> */}
+              <DrawerRender />
+              {/* </MySafeAreaView> */}
             </ThemeProvider>
           </Theme>
         </Suspense>
