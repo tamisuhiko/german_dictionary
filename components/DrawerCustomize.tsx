@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { View } from "react-native";
+import React, { useState } from "react";
+import { Pressable, View } from "react-native";
 import { Image } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
@@ -12,6 +13,21 @@ import { Drawer } from "expo-router/drawer";
 import { Button, H1, H6, Text } from "tamagui";
 
 export function DrawerRender() {
+  const [lang, setLang] = useState({
+    lang: "vi",
+    source: require("../assets/vietnam.png")
+  });
+  const switchLang = () => {
+    if (lang.lang == "vi") {
+      setLang({ ...lang, lang: "en", source: require("../assets/us.png") });
+    } else {
+      setLang({
+        ...lang,
+        lang: "vi",
+        source: require("../assets/vietnam.png")
+      });
+    }
+  };
   return (
     <Drawer
       drawerContent={(props) => <DrawerContentCustomize {...props} />}
@@ -26,10 +42,13 @@ export function DrawerRender() {
           );
         },
         headerRight: () => (
-          <Button
-            onPress={() => alert("This is a button!")}
-            color="#fff"
-          />
+          <Pressable onPress={switchLang}>
+            <Image
+              source={lang.source}
+              style={{ width: 30 }}
+              resizeMode="contain"
+            />
+          </Pressable>
         )
       }}
     ></Drawer>
@@ -65,23 +84,23 @@ export function DrawerContentCustomize(props: DrawerContentComponentProps) {
         <H1>Chán</H1>
       </View>
       <DrawerItem
-        label="Screen1"
+        label="Tra cứu từ"
         labelStyle={{ color: "#fbae41", fontSize: 10 }}
         focused={focused[0]}
         onPress={() => onNavigationPressed("lookup", 0)}
       />
       <DrawerItem
-        label="Screen1"
+        label="Tra cứu giống (nhanh)"
         labelStyle={{ color: "#fbae41", fontSize: 10 }}
         focused={focused[1]}
         onPress={() => onNavigationPressed("setting", 1)}
       />
-      <DrawerItem
+      {/* <DrawerItem
         label="Screen1"
         labelStyle={{ color: "#fbae41", fontSize: 10 }}
         focused={focused[2]}
         onPress={() => onNavigationPressed("lookup", 2)}
-      />
+      /> */}
       {/* <DrawerItemList {...props} /> */}
     </DrawerContentScrollView>
   );

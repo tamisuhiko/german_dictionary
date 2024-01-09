@@ -16,7 +16,7 @@ import { MyStack } from "../components/MyStack";
 export default function Home() {
   const router = useRouter();
 
-  return <Redirect href="/lookup" />;
+  return <Redirect href="/main/lookup" />;
 }
 
 {

@@ -9,6 +9,18 @@
     },
     "icon": "./assets/icon.png",
     "name": "tamagui-app",
-    "slug": "tamagui-app"
+    "slug": "german-dictionary",
+    "extra": {
+      "eas": {
+        "projectId": "d04b03f4-0aab-40c0-a848-f6c191f4b731"
+      }
+    },
+    "owner": "nhatlinh_216",
+    "android": {
+      "package": "com.nhatlinh_216.germandictionary"
+    },
+    "ios": {
+      "bundleIdentifier": "."
+    }
   }
 }
