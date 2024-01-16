@@ -40,6 +40,7 @@ export interface WordDictationary {
   suggestionWord: WordSuggestionResult;
   wordSearchingResult: WordSearchingResult;
   wordConjugationSearchingResult: Array<WordConjugationSearchingResult>;
+  wordListbyImage: any;
   isFetchingData: boolean; // Loading data that users is looking up
   isOpenWordSheet: boolean; // After loading data completely, a Sheet will be appear
 }
@@ -54,7 +55,8 @@ const initialState: WordDictationary = {
   wordSearchingResult: null,
   isFetchingData: false,
   wordConjugationSearchingResult: [],
-  isOpenWordSheet: false
+  isOpenWordSheet: false,
+  wordListbyImage: null
 };
 
 export const dictionaryDataSlice = createSlice({
@@ -90,6 +92,7 @@ export const dictionaryDataSlice = createSlice({
           state.isFetchingData = false;
           state.wordConjugationSearchingResult = [];
           state.wordSearchingResult = action.payload;
+          console.log(state.wordSearchingResult);
         }
       )
       .addCase(
@@ -100,6 +103,12 @@ export const dictionaryDataSlice = createSlice({
         ) => {
           state.isFetchingData = false;
           state.wordConjugationSearchingResult = action.payload;
+        }
+      )
+      .addCase(
+        searchWordbyImages.fulfilled,
+        (state: State, action: PayloadAction<any>) => {
+          state.wordListbyImage = action.payload;
         }
       )
       .addMatcher<PendingAction>(
@@ -175,6 +184,52 @@ export const lookUpWordConjugation = createAsyncThunk(
     );
     const data = await response.json();
 
+    return data;
+  }
+);
+
+export const searchWordbyImages = createAsyncThunk(
+  "api/imageSearchingWords",
+  async (word: string) => {
+    const response = await fetch(
+      "https://www.google.com/search?q=fetch+google+url+with+no+cors&sca_esv=598740777&rlz=1C1GCEA_enVN962VN962&tbm=isch&sxsrf=ACQVn0-WNHwsuAGWC7xoy5sZD8wIRloihA:1705395266135&source=lnms&sa=X&ved=2ahUKEwiGk6i4xOGDAxUusVYBHU8GC44Q_AUoA3oECAEQBQ&biw=1536&bih=762&dpr=1.25",
+      {
+        headers: {
+          accept:
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "accept-language": "en-US,en;q=0.9,vi;q=0.8,zh-CN;q=0.7,zh;q=0.6",
+          "cache-control": "no-cache",
+          pragma: "no-cache",
+          "sec-ch-ua":
+            '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+          "sec-ch-ua-arch": '"x86"',
+          "sec-ch-ua-bitness": '"64"',
+          "sec-ch-ua-full-version": '"120.0.6099.200"',
+          "sec-ch-ua-full-version-list":
+            '"Not_A Brand";v="8.0.0.0", "Chromium";v="120.0.6099.200", "Google Chrome";v="120.0.6099.200"',
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-model": '""',
+          "sec-ch-ua-platform": '"Windows"',
+          "sec-ch-ua-platform-version": '"10.0.0"',
+          "sec-ch-ua-wow64": "?0",
+          "sec-fetch-dest": "document",
+          "sec-fetch-mode": "navigate",
+          "sec-fetch-site": "same-origin",
+          "sec-fetch-user": "?1",
+          "upgrade-insecure-requests": "1",
+          "x-client-data":
+            "CIW2yQEIpLbJAQipncoBCM2OywEIlqHLAQjxmM0BCIWgzQEIjuHNAQit6c0BCKHuzQEIg/DNAQiF8M0BCKryzQEYyOHNARin6s0B"
+        },
+        referrer: "https://www.google.com/",
+        referrerPolicy: "origin",
+        body: null,
+        method: "GET",
+        mode: "no-cors",
+        credentials: "include"
+      }
+    );
+    const data = await response.text();
+    console.log(data);
     return data;
   }
 );

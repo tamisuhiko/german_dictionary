@@ -6,6 +6,7 @@ import { closeWordSheet } from "../redux/slices/dictionaryDataSlice";
 import { AppDispatch } from "../redux/store/store";
 
 import ConjugationComponent from "./ConjugationComponent";
+import { ImageSearchResult } from "./ImageSearchResult";
 import { WordSearchingResult } from "./WordSearchingResult";
 import { WordSynonym } from "./WordSynonym";
 
@@ -90,7 +91,7 @@ const TabNagivation = () => {
       </TabsContent>
 
       <TabsContent value="tab3">
-        <Text>Notifications</Text>
+        <ImageSearchResult />
       </TabsContent>
     </Tabs>
   );

@@ -10,7 +10,10 @@ import { WordSynonym } from "../../components/WordSynonym";
 export default function LookupTab() {
   return (
     <View style={{ flexDirection: "column", flex: 1 }}>
-      <InputWordSearchComponent />
+      <View>
+        <InputWordSearchComponent />
+      </View>
+
       <WordSheet />
     </View>
   );

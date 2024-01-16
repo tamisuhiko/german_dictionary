@@ -62,7 +62,6 @@ export default function InputWordSearchComponent(props: IProps) {
   }, [word]);
 
   const onLookupWord = (word: string) => {
-    console.log("Click roi");
     dispatch(
       lookUpWordMeaning({
         dict: "devi",
@@ -78,7 +77,6 @@ export default function InputWordSearchComponent(props: IProps) {
       ) {
         dispatch(lookUpWordConjugation(action.payload.result[0].word));
       }
-
       dispatch(openWordSheet());
     });
   };

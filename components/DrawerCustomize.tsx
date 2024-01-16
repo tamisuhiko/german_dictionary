@@ -93,7 +93,7 @@ export function DrawerContentCustomize(props: DrawerContentComponentProps) {
         label="Tra cứu giống (nhanh)"
         labelStyle={{ color: "#fbae41", fontSize: 10 }}
         focused={focused[1]}
-        onPress={() => onNavigationPressed("setting", 1)}
+        onPress={() => onNavigationPressed("quick_lookup", 1)}
       />
       {/* <DrawerItem
         label="Screen1"
