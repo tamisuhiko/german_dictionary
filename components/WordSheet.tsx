@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Separator, Sheet, SizableText, Tabs, Text, View } from "tamagui";
 
@@ -46,6 +47,7 @@ export default function WordSheet() {
 }
 
 const TabNagivation = () => {
+  const { t, i18n } = useTranslation();
   return (
     <Tabs
       defaultValue="tab1"
@@ -65,20 +67,26 @@ const TabNagivation = () => {
           flex={1}
           value="tab1"
         >
-          <SizableText fontFamily="$body">Từ vựng</SizableText>
+          <SizableText fontFamily="$body">
+            {t("word_result_screen_tab_vocabulary")}
+          </SizableText>
         </Tabs.Tab>
 
         <Tabs.Tab
           flex={1}
           value="tab2"
         >
-          <SizableText fontFamily="$body"> Conjugation</SizableText>
+          <SizableText fontFamily="$body">
+            {t("word_result_screen_tab_conjugation")}
+          </SizableText>
         </Tabs.Tab>
         <Tabs.Tab
           flex={1}
           value="tab3"
         >
-          <SizableText fontFamily="$body">Hình ảnh</SizableText>
+          <SizableText fontFamily="$body">
+            {t("word_result_screen_tab_google_image")}
+          </SizableText>
         </Tabs.Tab>
       </Tabs.List>
       <Separator />

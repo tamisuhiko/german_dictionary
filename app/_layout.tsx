@@ -1,3 +1,5 @@
+import "../i18n/i18n";
+
 import { Suspense, useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import { Provider } from "react-redux";
@@ -17,7 +19,6 @@ import {
 import { MySafeAreaView } from "../components/MySafeAreaView";
 import store from "../redux/store/store";
 import config from "../tamagui.config";
-
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {

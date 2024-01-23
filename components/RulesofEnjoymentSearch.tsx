@@ -43,9 +43,9 @@ const defaultProps = {
   delay: 500
 };
 
-InputWordSearchComponent.defaultProps = defaultProps;
+RulesofEnjoymentSearch.defaultProps = defaultProps;
 
-export default function InputWordSearchComponent(props: IProps) {
+export default function RulesofEnjoymentSearch(props: IProps) {
   const [word, setWord] = useState("");
   const { t, i18n } = useTranslation();
 
@@ -54,34 +54,10 @@ export default function InputWordSearchComponent(props: IProps) {
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
-      const parameter = {
-        keyword: word,
-        dict: dictionaryData.wordTranslation
-      } as WordSuggestionParameter;
-      dispatch(fetchWordSuggestion(parameter));
+      dispatch(fetchWordListDatabyWord(word));
     }, props.delay);
     return () => clearTimeout(timeOutId);
   }, [word]);
-
-  const onLookupWord = (word: string) => {
-    dispatch(
-      lookUpWordMeaning({
-        dict: "devi",
-        lang: dictionaryData.wordTranslation,
-        keyword: word
-      })
-    ).then((action: PayloadAction<WordSearchingResult>) => {
-      const wordCount = action.payload.result[0]?.word.split(" ");
-      if (
-        action.payload.found &&
-        action.payload.result[0]?.conjugation == null &&
-        wordCount.length < 2
-      ) {
-        dispatch(lookUpWordConjugation(action.payload.result[0].word));
-      }
-      dispatch(openWordSheet());
-    });
-  };
 
   return (
     <YStack
@@ -118,7 +94,6 @@ export default function InputWordSearchComponent(props: IProps) {
           onChangeText={(data) => setWord(data)}
         />
       </XStack>
-
       <ScrollView
         width={"100%"}
         backgroundColor={black}
@@ -127,83 +102,8 @@ export default function InputWordSearchComponent(props: IProps) {
         borderColor={"#FFFFFF"}
         borderWidth={0.2}
         display={word ? "block" : "none"}
-        maxHeight={500}
       >
         {dictionaryData.isFetchingData && word ? (
-          <Spinner
-            size="large"
-            color="$orange10"
-          />
-        ) : (
-          <YStack>
-            {dictionaryData.suggestionWord?.data?.map((data, key) => {
-              const wordSplit = data.split("#");
-              return (
-                <View key={key}>
-                  <View
-                    flexDirection={"row"}
-                    alignItems="center"
-                    minHeight={50}
-                  >
-                    <View flex={6}>
-                      <Text
-                        fontSize={30}
-                        color={"orange"}
-                      >
-                        {`${wordSplit[0]} `}
-                      </Text>
-                      {wordSplit[1] ? (
-                        <Text
-                          fontSize={15}
-                          color={"red"}
-                        >{`[${wordSplit[1]}] `}</Text>
-                      ) : (
-                        <Text fontSize={15}>{``}</Text>
-                      )}
-                      {wordSplit[2] ? (
-                        <Text fontSize={15}>{`${wordSplit[2]}`}</Text>
-                      ) : (
-                        <Text fontSize={15}>{``}</Text>
-                      )}
-                    </View>
-                    <Button
-                      flex={1}
-                      color={"#ffffff"}
-                      height={40}
-                      onPress={() => {
-                        onLookupWord(wordSplit[0]);
-                      }}
-                      icon={
-                        <Search
-                          size="$1"
-                          backgroundColor={"white"}
-                        />
-                      }
-                    />
-                  </View>
-                  <Divider />
-                </View>
-              );
-            })}
-          </YStack>
-        )}
-        <Text fontSize={15}>{``}</Text>
-      </ScrollView>
-    </YStack>
-  );
-}
-
-{
-  /* <ScrollView
-        width={"100%"}
-        backgroundColor={black}
-        padding={"$3"}
-        borderRadius={"$3"}
-        borderColor={"#FFFFFF"}
-        borderWidth={0.2}
-        display={word ? "block" : "none"}
-      >
-        {dictionaryData.isLoading && word ? (
           <Spinner
             size="large"
             color="$orange10"
@@ -226,5 +126,7 @@ export default function InputWordSearchComponent(props: IProps) {
             })}
           </YStack>
         )}
-      </ScrollView> */
+      </ScrollView>
+    </YStack>
+  );
 }

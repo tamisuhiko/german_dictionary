@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { Image } from "react-native";
 import { useSelector } from "react-redux";
@@ -33,6 +34,7 @@ export function WordSearchingResult() {
 }
 
 function WordSearchingHeader(props: WordDictationary) {
+  const { t, i18n } = useTranslation();
   if (!props.wordSearchingResult?.result[0].conjugation) return "";
   return (
     <YStack>
@@ -41,7 +43,7 @@ function WordSearchingHeader(props: WordDictationary) {
           backgroundColor={"orange"}
           fontSize={20}
         >
-          Giống:
+          {`${t("word_search_rules_of_enjoyment")}: `}
         </Text>
         <Text
           backgroundColor={"red"}
@@ -55,7 +57,7 @@ function WordSearchingHeader(props: WordDictationary) {
           backgroundColor={"orange"}
           fontSize={20}
         >
-          Số nhiều:
+          {`${t("word_search_plural_noun")}: `}
         </Text>
         <Text
           backgroundColor={"red"}
@@ -69,7 +71,7 @@ function WordSearchingHeader(props: WordDictationary) {
           backgroundColor={"orange"}
           fontSize={20}
         >
-          Sở hữu cách số ít:
+          {`${t("word_search_genitiv_singular_noun")}`}
         </Text>
         <Text
           backgroundColor={"red"}
@@ -120,6 +122,7 @@ function WordSearchingBody(props: WordDictationary) {
 }
 
 function WordSearchingFooter(props: WordDictationary) {
+  const { t, i18n } = useTranslation();
   if (props.wordConjugationSearchingResult.length < 1) return "";
 
   return (
@@ -129,7 +132,7 @@ function WordSearchingFooter(props: WordDictationary) {
         textTransform="uppercase"
         fontSize={20}
       >
-        Synonym
+        {t("word_search_synonym")}
       </Text>
       {props.wordSearchingResult.result[0].snym[0].content[0].syno.map(
         (data, key) => {
@@ -148,7 +151,7 @@ function WordSearchingFooter(props: WordDictationary) {
         textTransform="uppercase"
         fontSize={20}
       >
-        Related
+        {t("word_search_related")}
       </Text>
       <Text fontSize={20}>{props.wordSearchingResult.result[0].keyword}</Text>
     </YStack>

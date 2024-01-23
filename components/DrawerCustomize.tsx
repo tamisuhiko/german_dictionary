@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Pressable, View } from "react-native";
 import { Image } from "react-native";
+import { useDispatch } from "react-redux";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DrawerContentComponentProps,
@@ -12,15 +14,26 @@ import {
 import { Drawer } from "expo-router/drawer";
 import { Button, H1, H6, Text } from "tamagui";
 
+import { setwordTranslation } from "../redux/slices/dictionaryDataSlice";
+import { AppDispatch } from "../redux/store/store";
+
 export function DrawerRender() {
   const [lang, setLang] = useState({
     lang: "vi",
     source: require("../assets/vietnam.png")
   });
+
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
+
   const switchLang = () => {
     if (lang.lang == "vi") {
+      i18n.changeLanguage("en"); //change the language
+      dispatch(setwordTranslation("en"));
       setLang({ ...lang, lang: "en", source: require("../assets/us.png") });
     } else {
+      i18n.changeLanguage("vi");
+      dispatch(setwordTranslation("vi"));
       setLang({
         ...lang,
         lang: "vi",
@@ -68,6 +81,8 @@ export function DrawerContentCustomize(props: DrawerContentComponentProps) {
     false
   ]);
 
+  const { t, i18n } = useTranslation();
+
   const onNavigationPressed = (route: string, index: number) => {
     props.navigation.navigate(route);
 
@@ -84,13 +99,13 @@ export function DrawerContentCustomize(props: DrawerContentComponentProps) {
         <H1>Chán</H1>
       </View>
       <DrawerItem
-        label="Tra cứu từ"
+        label={t("drawer_menu_quick_search")}
         labelStyle={{ color: "#fbae41", fontSize: 10 }}
         focused={focused[0]}
         onPress={() => onNavigationPressed("lookup", 0)}
       />
       <DrawerItem
-        label="Tra cứu giống (nhanh)"
+        label={t("drawer_menu_rules_of_enjoyment_search")}
         labelStyle={{ color: "#fbae41", fontSize: 10 }}
         focused={focused[1]}
         onPress={() => onNavigationPressed("quick_lookup", 1)}
