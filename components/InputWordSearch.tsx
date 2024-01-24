@@ -113,7 +113,7 @@ export default function InputWordSearchComponent(props: IProps) {
         <Input
           width={"100%"}
           size={"$6"}
-          placeholder={t("search_box_placeholder")}
+          placeholder={t("drawer_menu_quick_search")}
           value={word}
           onChangeText={(data) => setWord(data)}
         />
@@ -191,40 +191,4 @@ export default function InputWordSearchComponent(props: IProps) {
       </ScrollView>
     </YStack>
   );
-}
-
-{
-  /* <ScrollView
-        width={"100%"}
-        backgroundColor={black}
-        padding={"$3"}
-        borderRadius={"$3"}
-        borderColor={"#FFFFFF"}
-        borderWidth={0.2}
-        display={word ? "block" : "none"}
-      >
-        {dictionaryData.isLoading && word ? (
-          <Spinner
-            size="large"
-            color="$orange10"
-          />
-        ) : (
-          <YStack>
-            {dictionaryData.wordList?.suggestions?.map((data, key) => {
-              return (
-                <XStack
-                  key={key}
-                  width={"100%"}
-                >
-                  <Text
-                    fontSize={30}
-                    color={"#ddb100"}
-                  >{`${data.data} | `}</Text>
-                  <Text fontSize={30}>{`${data.value}`}</Text>
-                </XStack>
-              );
-            })}
-          </YStack>
-        )}
-      </ScrollView> */
 }

@@ -95,7 +95,6 @@ export const dictionaryDataSlice = createSlice({
           state.isFetchingData = false;
           state.wordConjugationSearchingResult = [];
           state.wordSearchingResult = action.payload;
-          console.log(state.wordSearchingResult);
         }
       )
       .addCase(
@@ -141,7 +140,6 @@ export const fetchWordListDatabyWord = createAsyncThunk(
       `https://api2.matetranslate.com/der-die-das/lookup_article?query=${word}`
     );
     const data = await response.json();
-    //console.log(data);
     return data;
   }
 );
@@ -158,7 +156,6 @@ export const fetchWordSuggestion = createAsyncThunk(
       body: JSON.stringify(parameters)
     });
     const data = await response.json();
-    //console.log(JSON.stringify(data));
     return data;
   }
 );

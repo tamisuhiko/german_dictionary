@@ -89,7 +89,7 @@ export default function RulesofEnjoymentSearch(props: IProps) {
         <Input
           width={"100%"}
           size={"$6"}
-          placeholder={t("search_box_placeholder")}
+          placeholder={t("drawer_menu_rules_of_enjoyment_search")}
           value={word}
           onChangeText={(data) => setWord(data)}
         />

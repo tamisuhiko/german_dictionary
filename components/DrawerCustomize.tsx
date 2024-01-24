@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Pressable, View } from "react-native";
+import { Linking, Pressable, StyleSheet, View } from "react-native";
 import { Image } from "react-native";
 import { useDispatch } from "react-redux";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -11,6 +11,7 @@ import {
   DrawerItem,
   DrawerItemList
 } from "@react-navigation/drawer";
+import { Book, BookDown, Facebook, Plus } from "@tamagui/lucide-icons";
 import { Drawer } from "expo-router/drawer";
 import { Button, H1, H6, Text } from "tamagui";
 
@@ -45,6 +46,7 @@ export function DrawerRender() {
     <Drawer
       drawerContent={(props) => <DrawerContentCustomize {...props} />}
       screenOptions={{
+        swipeEdgeWidth: 200,
         headerTitle: () => {
           return (
             <Image
@@ -94,29 +96,61 @@ export function DrawerContentCustomize(props: DrawerContentComponentProps) {
     setfocus(newFocused);
   };
   return (
-    <DrawerContentScrollView {...props}>
+    <DrawerContentScrollView
+      {...props}
+      contentContainerStyle={styles.scrollView}
+    >
       <View>
-        <H1>Chán</H1>
+        <View style={{ alignItems: "center" }}>
+          <Image
+            source={require("../assets/funny.gif")}
+            style={{ height: 150, width: 150 }}
+            resizeMode="contain"
+          />
+        </View>
+        <View>
+          <DrawerItem
+            label={() => (
+              <View style={{ alignItems: "center", flexDirection: "row" }}>
+                <Book />
+                <Text> {t("drawer_menu_quick_search")}</Text>
+              </View>
+            )}
+            labelStyle={{ color: "#fbae41", fontSize: 15 }}
+            focused={focused[0]}
+            onPress={() => onNavigationPressed("lookup", 0)}
+          />
+          <DrawerItem
+            label={() => (
+              <View style={{ alignItems: "center", flexDirection: "row" }}>
+                <BookDown />
+                <Text>{t("drawer_menu_rules_of_enjoyment_search")}</Text>
+              </View>
+            )}
+            labelStyle={{ color: "#fbae41", fontSize: 15 }}
+            focused={focused[1]}
+            onPress={() => onNavigationPressed("quick_lookup", 1)}
+          />
+        </View>
       </View>
-      <DrawerItem
-        label={t("drawer_menu_quick_search")}
-        labelStyle={{ color: "#fbae41", fontSize: 10 }}
-        focused={focused[0]}
-        onPress={() => onNavigationPressed("lookup", 0)}
-      />
-      <DrawerItem
-        label={t("drawer_menu_rules_of_enjoyment_search")}
-        labelStyle={{ color: "#fbae41", fontSize: 10 }}
-        focused={focused[1]}
-        onPress={() => onNavigationPressed("quick_lookup", 1)}
-      />
-      {/* <DrawerItem
-        label="Screen1"
-        labelStyle={{ color: "#fbae41", fontSize: 10 }}
-        focused={focused[2]}
-        onPress={() => onNavigationPressed("lookup", 2)}
-      /> */}
-      {/* <DrawerItemList {...props} /> */}
+      <View style={{ padding: 20, alignItems: "center" }}>
+        <Button
+          width={"100%"}
+          icon={Facebook}
+          onPress={() => {
+            Linking.openURL("https://www.facebook.com/nhatlinh.216/");
+          }}
+        >
+          @Tamisuhiko
+        </Button>
+      </View>
     </DrawerContentScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    justifyContent: "space-between"
+  }
+});
