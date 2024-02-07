@@ -1,43 +1,102 @@
-# Tamagui Expo Template
-###### This is a community template
+<!DOCTYPE html>
+<html lang="en">
 
-<p align="center">
-  <img src="./assets/icon.png" alt="Tamagui Icon"/>
-</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Dictionary App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
 
-<div align="center">
-  <a target="_blank" href="https://expo.dev/%40ivopr/TET?serviceType=classic&distribution=expo-go&releaseChannel=default">
-      <img src="https://img.shields.io/badge/Open%20in%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000" alt="Open in Expo Go"/>
-    </a>
-</div>
+        h1,
+        h2,
+        h3 {
+            color: #007bff;
+        }
 
-## Quick Start
-Just run the following, changing `yourappname` to the name of your project.
-```
-npx create-expo-app yourappname -t tamagui-expo-template --no-install
-cd yourappname
-yarn install
-```
-If you have [Expo Go](https://expo.dev/client) app installed, just start your new app with `yarn start`, if not, create your own [Development Client](https://docs.expo.dev/development/build/)
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
 
-## What you get
-This is a starter template for [Expo](https://expo.dev) using [Tamagui](https://tamagui.dev).
-In this template you get out of the box:
-- Semantic Release already configured with everything you might want
-- Expo Router up and running
-- Tamagui, a nice and modern way of building your UIs
-- ESLint and Prettier configurations
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
 
-## What you don't get
-- Expo Web support (for this, go to the [Official Tamagui Starter](https://github.com/tamagui/tamagui))
-- i18n
-- Global State management
+        h3 {
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+        }
 
-## If you want to...
-1. You can build your own dev client with `eas build -p android --profile development`
-1. Develop in WSL, use the `yarn wsl` command, else `yarn start` is your default choice.
+        p {
+            margin-bottom: 1.5em;
+        }
 
-## Troubleshooting
-### I'm on WSL but my app doesn't connect
-WSL2 runs inside its own container, so it doesn't share the same IPv4 and port status as your host machine, you might need [this](https://gist.github.com/ivopr/64f974e632b7edcbe1f5e58b91e31598)
+        code {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border: 1px solid #dfe2e5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
 
+<body>
+
+    <h1>German Dictionary App</h1>
+
+    <p>This is a mobile application built with React Native, Redux Toolkit, and Expo for learning and exploring the German language.</p>
+
+    <h2>Technologies Used</h2>
+
+    <ul>
+        <li>React Native</li>
+        <li>Redux Toolkit</li>
+        <li>Expo</li>
+    </ul>
+
+    <h2>Installation</h2>
+
+    <p>Make sure you have Node.js and npm installed. Clone the repository and run the following commands:</p>
+
+    <code>
+        npm install
+    </code>
+
+    <p>For Expo projects, you can use:</p>
+
+    <code>
+        expo start
+    </code>
+
+    <h2>Features</h2>
+
+    <ul>
+        <li>Search for German words</li>
+        <li>View word definitions and examples</li>
+        <li>Save favorite words</li>
+        <!-- Add more features as needed -->
+    </ul>
+
+    <h2>Contributing</h2>
+
+    <p>Contributions are welcome! Please follow the guidelines in the <code>CONTRIBUTING.md</code> file.</p>
+
+    <h2>License</h2>
+
+    <p>This project is licensed under the MIT License - see the <code>LICENSE.md</code> file for details.</p>
+
+    <p>Happy learning!</p>
+
+</body>
+
+</html>
