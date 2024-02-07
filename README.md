@@ -1,102 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+# German Dictionary App
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>German Dictionary App</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
+This mobile application serves as a German dictionary, allowing users to explore and learn the German language. The app is built using React Native, Redux Toolkit, and Expo.
 
-        h1,
-        h2,
-        h3 {
-            color: #007bff;
-        }
+## Technologies Used
 
-        h1 {
-            font-size: 2em;
-            margin-bottom: 0.5em;
-        }
+- [React Native](https://reactnative.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Expo](https://expo.dev/)
 
-        h2 {
-            font-size: 1.5em;
-            margin-bottom: 0.5em;
-        }
+## Installation
 
-        h3 {
-            font-size: 1.2em;
-            margin-bottom: 0.5em;
-        }
+Ensure you have Node.js and npm installed. Clone the repository and run the following commands:
 
-        p {
-            margin-bottom: 1.5em;
-        }
+```bash
+npm install
+expo start
+Scan the QR code with the Expo Go app on your device to preview the app.
 
-        code {
-            font-family: 'Courier New', monospace;
-            background-color: #f8f9fa;
-            padding: 2px 4px;
-            border: 1px solid #dfe2e5;
-            border-radius: 4px;
-        }
-    </style>
-</head>
+Features
+Search for German words
+View word definitions and examples
+Save favorite words
+<!-- Add more features as needed -->
+Folder Structure
+Describe the main folders and files in your project.
 
-<body>
+Usage
+Provide instructions on how to use the German Dictionary App, including any setup or configuration required.
 
-    <h1>German Dictionary App</h1>
+Contributing
+Contributions are welcome! Please follow the guidelines in the CONTRIBUTING.md file.
 
-    <p>This is a mobile application built with React Native, Redux Toolkit, and Expo for learning and exploring the German language.</p>
-
-    <h2>Technologies Used</h2>
-
-    <ul>
-        <li>React Native</li>
-        <li>Redux Toolkit</li>
-        <li>Expo</li>
-    </ul>
-
-    <h2>Installation</h2>
-
-    <p>Make sure you have Node.js and npm installed. Clone the repository and run the following commands:</p>
-
-    <code>
-        npm install
-    </code>
-
-    <p>For Expo projects, you can use:</p>
-
-    <code>
-        expo start
-    </code>
-
-    <h2>Features</h2>
-
-    <ul>
-        <li>Search for German words</li>
-        <li>View word definitions and examples</li>
-        <li>Save favorite words</li>
-        <!-- Add more features as needed -->
-    </ul>
-
-    <h2>Contributing</h2>
-
-    <p>Contributions are welcome! Please follow the guidelines in the <code>CONTRIBUTING.md</code> file.</p>
-
-    <h2>License</h2>
-
-    <p>This project is licensed under the MIT License - see the <code>LICENSE.md</code> file for details.</p>
-
-    <p>Happy learning!</p>
-
-</body>
-
-</html>
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
